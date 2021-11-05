@@ -1,0 +1,62 @@
+[include]
+  path = ~/.gitconfig.local
+[alias]
+  amend = commit --amend
+  b = branch
+  commti = commit
+  co = checkout
+  cp = cherry-pick
+  d = diff --color-words --word-diff-regex='\\w+|[^[:space:]]'
+  diffc = diff --cached
+  h = show HEAD
+	stat = status
+	s = status
+  l = log --format='[%h %ci] %s (%cn)' --date=local
+  lg = log --graph --format='[%h %ci] %s (%cn)' --date=local # Log Graph
+  lo = log --oneline
+  sm = submodule
+  empty = commit --allow-empty -m
+[user]
+	name = Masato Ikeda
+	email = masato.ikeda@gmail.com
+[merge]
+  ff = false
+[branch]
+  autosetuprebase = always
+[branch "master"]
+  mergeoptions = --no-ff
+  rebase = true
+[branch "develop"]
+  mergeoptions = --no-ff
+  rebase = true
+[credential]
+	helper = osxkeychain
+[web]
+  browser = google-chrome
+[browse-remote "github.com"]
+  top = https://{host}/{path}
+  ref = https://{host}/{path}/tree/{short_ref}
+  rev = https://{host}/{path}/commit/{commit}
+[push]
+	default = current
+[color]
+	ui = auto
+[core]
+	excludesfile = ~/.gitignore
+  pager = LESS=-RX less
+	commentchar = ^
+[pager]
+  # http://tk0miya.hatenablog.com/entry/2013/12/22/155358
+  log = LESS=-RX less
+  show = diff-highlight | nkf -w | LESSCHARSET=utf-8 LESS=-RX less
+  diff = diff-highlight | nkf -w | LESSCHARSET=utf-8 LESS=-RX less
+[pr-release "branch"]
+	staging = develop
+[fetch]
+	prune = true
+[gc]
+	auto = 0
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main

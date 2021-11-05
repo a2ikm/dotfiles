@@ -1,0 +1,35 @@
+
+#
+# http://d.hatena.ne.jp/bellbind/20051119/1132432648
+#
+# Ctrl+t c : create window
+# Ctrl+t n : go to next window
+# Ctrl+t p : go to previous window
+# Ctrl+t " : select window from list
+# Ctrl+t d : detouch
+#
+# screen -r   : resume session
+# screen -x   : multi display(share session with other displays)
+# screen -ls  : show session list
+# screen -r xxx : resume session specified with xxx(shown in -ls)
+#
+
+
+defutf8 on
+defkanji utf-8
+encoding utf-8 utf-8
+defencoding utf-8
+defscrollback 10000
+
+escape ^Tt
+
+bell_msg "Bell in window %^G"
+shell -$SHELL
+hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+startup_message off
+autodetach on
+term xterm-256color
+
+# http://blog.s21g.com/articles/1047
+termcapinfo xterm* ti@:te@
+

@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+require "optparse"
+require "open3"
+
+opts = {}
+
+OptionParser.new do |op|
+  op.on("-n", "--namespace NAMESPACE", "Kubernetes namespace") do |v|
+    opts[:namespace] = v
+  end
+end.parse!(ARGV)
+
+opts[:app] = ARGV.shift
+
+get_args = ["kubectl", "get", "pods", "-o", "jsonpath=\"{.items[0].metadata.name}\""]
+get_args += ["-l", "app=#{opts[:app]}"] if opts.key?(:app)
+get_args += ["-n", opts[:namespace]] if opts.key?(:namespace)
+
+puts "$ " + get_args.join(" ")
+out, status = Open3.capture2(*get_args)
+
+abort unless status.success?
+
+pod = out.chomp.sub(/^"/, "").sub(/"$/, "")
+exec_args = ["kubectl", "exec", pod, "-it", "--container", opts[:app]]
+exec_args += ["-n", opts[:namespace]] if opts.key?(:namespace)
+exec_args += ["--"]
+exec_args += ARGV
+
+puts "$ " + exec_args.join(" ")
+exec(*exec_args)

@@ -1,0 +1,54 @@
+#!/bin/sh
+
+set -eux
+
+dotfiles_dir="$(cd "$( dirname "$0" )" && pwd)"
+
+link() {
+  ln -sf "$dotfiles_dir/$1" "$2"
+}
+
+mkdir -p ~/bin
+
+link bin/kubexec ~/bin/kubexec
+
+link etc/.gitconfig ~/.gitconfig
+link etc/.gitignore ~/.gitignore
+link etc/.irbrc ~/.irbrc
+link etc/.screenrc ~/.screenrc
+link etc/.tigrc ~/.tigrc
+link etc/.vimrc ~/.vimrc
+link etc/.zshrc ~/.zshrc
+
+case "$(uname)" in
+  Darwin)
+    if [ -z "$(type brew)" ]; then
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+    brew install colordiff
+    brew install grep
+    brew install peco
+    brew install ghq
+    brew install gh
+    brew install nkf
+    brew install git
+    brew install ripgrep
+
+    ln -s /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
+    ;;
+  Linux)
+    ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
+    ;;
+  *)
+    echo "unsupported platform: $(uname)"
+    ;;
+esac
+
+if [ ! -d ~/.rbenv ]; then
+  git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+fi
+
+if [ ! -d ~/.rbenv/plugins/ruby-build ]; then
+  mkdir -p ~/.rbenv/plugins
+  git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+fi
