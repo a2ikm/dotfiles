@@ -9,6 +9,7 @@ link() {
 }
 
 mkdir -p ~/bin
+mkdir -p ~/.zshrc.d
 
 link bin/kubexec ~/bin/kubexec
 
