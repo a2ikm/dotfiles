@@ -115,8 +115,8 @@ fi
 
 # === Go
 
-if [ -d "$brew_prefix/opt/go@1.16" ]; then
-  export PATH="$brew_prefix/opt/go@1.16/bin:$PATH"
+if [ -d "$brew_prefix/opt/go" ]; then
+  export PATH="$brew_prefix/opt/go/bin:$PATH"
 fi
 
 if type go >/dev/null 2>&1; then
