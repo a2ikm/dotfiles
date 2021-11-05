@@ -266,6 +266,8 @@ if [ -e "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then
   source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 fi
 
-for rc in $(ls -1 ~/.zshrc.d/*.zsh); do
-  source $rc
-done
+if [ -d ~/.zshrc.d ]; then
+  for rc in $(ls -1 ~/.zshrc.d/*.zsh); do
+    source $rc
+  done
+fi
