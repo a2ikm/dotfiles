@@ -10,7 +10,7 @@ link() {
 
 mkdir -p ~/bin
 
-link bin/kubexec ~/bin/kubexec
+link bin/kexec ~/bin/kexec
 
 link etc/.gitconfig ~/.gitconfig
 link etc/.gitignore ~/.gitignore
