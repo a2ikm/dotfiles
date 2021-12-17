@@ -15,7 +15,7 @@
   lg = log --graph --format='[%h %ci] %s (%cn)' --date=local # Log Graph
   lo = log --oneline
   sm = submodule
-  empty = commit --allow-empty -m
+  empty = commit --allow-empty
 [user]
 	name = Masato Ikeda
 	email = masato.ikeda@gmail.com
