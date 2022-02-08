@@ -37,13 +37,8 @@ case "$(uname)" in
     ln -s /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
     ;;
   Linux)
-    if [ -d  /usr/share/doc/git/contrib/diff-highlight ]; then
-      if [ ! -f /usr/share/doc/git/contrib/diff-highlight/diff-highlight ]; then
-        cd /usr/share/doc/git/contrib/diff-highlight
-        make
-        cd -
-      fi
-      ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
+    if [ -f  /usr/share/doc/git/contrib/diff-highlight/diff-highlight ]; then
+      ln -sf /usr/share/doc/git/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
     fi
     ;;
   *)
