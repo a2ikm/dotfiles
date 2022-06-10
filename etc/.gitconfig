@@ -49,7 +49,7 @@
   # http://tk0miya.hatenablog.com/entry/2013/12/22/155358
   log = LESS=-RX less
   show = diff-highlight | nkf -w | LESSCHARSET=utf-8 LESS=-RX less
-  diff = diff-highlight | nkf -w | LESSCHARSET=utf-8 LESS=-RX less
+  diff = diff-highlight | LESSCHARSET=utf-8 LESS=-RX less
 [pr-release "branch"]
 	staging = develop
 [fetch]
