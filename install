@@ -38,11 +38,11 @@ case "$(uname)" in
     ;;
   Linux)
     if [ -f  /usr/share/doc/git/contrib/diff-highlight/diff-highlight ]; then
-      ln -sf /usr/share/doc/git/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
+      sudo ln -sf /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
     elif [ -d  /usr/share/doc/git/contrib/diff-highlight ]; then
       cd /usr/share/doc/git/contrib/diff-highlight
       sudo make
-      ln -sf /usr/share/doc/git/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
+      sudo ln -sf /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
     fi
 
     sudo apt install -y peco
