@@ -49,6 +49,7 @@ case "$(uname)" in
     sudo apt install -y nkf
     sudo apt install -y tig
     sudo apt install -y ripgrep
+    sudo apt install -y vim
 
     ;;
   *)
