@@ -46,6 +46,7 @@ case "$(uname)" in
     fi
 
     sudo apt install -y zsh
+    sudo apt install -y less
     sudo apt install -y peco
     sudo apt install -y nkf
     sudo apt install -y tig
