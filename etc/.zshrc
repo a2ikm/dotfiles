@@ -81,6 +81,7 @@ alias ll="ls -la"
 alias ls="ls -v"
 alias p=popd
 alias r="ghq get -p"
+alias rg="rg --no-heading"
 alias screen="screen -U"
 alias t=tig
 alias v=vim
