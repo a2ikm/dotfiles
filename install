@@ -25,14 +25,15 @@ case "$(uname)" in
     if [ -z "$(type brew)" ]; then
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
-    brew install colordiff
-    brew install grep
-    brew install peco
-    brew install ghq
-    brew install gh
-    brew install nkf
-    brew install git
-    brew install ripgrep
+    brew install \
+      colordiff \
+      gh \
+      ghq \
+      git \
+      grep \
+      nkf \
+      peco \
+      ripgrep
 
     ln -s /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
     ;;
