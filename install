@@ -26,14 +26,20 @@ case "$(uname)" in
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
     brew install \
+      awscli \
       colordiff \
       gh \
       ghq \
       git \
+      go \
       grep \
+      jq \
+      kubectl \
       nkf \
       peco \
-      ripgrep
+      ripgrep \
+      stern \
+      yq
 
     ln -s /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
     ;;
