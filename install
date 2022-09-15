@@ -32,10 +32,12 @@ case "$(uname)" in
       ghq \
       git \
       go \
+      graphviz \
       grep \
       jq \
       kubectl \
       nkf \
+      openjdk \
       peco \
       ripgrep \
       stern \
@@ -43,6 +45,7 @@ case "$(uname)" in
       yq
 
     ln -s /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
+    sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
     ;;
   Linux)
     if [ -f  /usr/share/doc/git/contrib/diff-highlight/diff-highlight ]; then
