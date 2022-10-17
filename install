@@ -36,9 +36,12 @@ case "$(uname)" in
       grep \
       jq \
       kubectl \
+      libyaml \
       nkf \
       openjdk \
+      openssl@1.1 \
       peco \
+      readline \
       ripgrep \
       stern \
       tig \
