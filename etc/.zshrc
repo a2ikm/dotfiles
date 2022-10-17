@@ -224,7 +224,7 @@ zle -N show_buffer_stack
 bindkey '^Q' show_buffer_stack
 
 function peco-select-file() {
-  local selected=$(find . -not -path "./.git*" -a -not -name "*.swp" -a -not -name ".DS_Store"| peco)
+  local selected=$(find . -not -path "./.git*" -a -not -path "./.yarn*" -a -not -name "*.swp" -a -not -name ".DS_Store"| peco)
   BUFFER="$LBUFFER$selected"
   CURSOR=$#BUFFER
 }
