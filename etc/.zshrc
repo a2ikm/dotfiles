@@ -2,14 +2,6 @@ export LANG=en_US.UTF-8
 export LC_TYPE=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
-brew_prefix="/usr/local"
-if [ -d /opt/homebrew ]; then
-  brew_prefix="/opt/homebrew"
-fi
-
-export PATH=$HOME/bin:$HOME/local/bin:$brew_prefix/bin:$PATH
-export MANPATH=$brew_prefix/share/man:$MANPATH
-
 export EDITOR=vim
 export PAGER=less
 
@@ -90,15 +82,40 @@ alias k=kubectl
 
 case "$(uname)" in
   Darwin)
-    alias diff=colordiff
-    alias grep=ggrep
-    alias zcat=gzcat
     export PATH=/Applications/CotEditor.app/Contents/SharedSupport/bin/:$PATH
     export PATH=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:$PATH
+
+    export MAKEFLAGS="--jobs $(sysctl -n hw.ncpu)"
 
     if [ -x /usr/libexec/java_home ]; then
       export JAVA_HOME=$(/usr/libexec/java_home)
       export PATH=$JAVA_HOME/bin:$PATH
+    fi
+
+    if [ -d /opt/homebrew ]; then
+      brew_prefix=/opt/homebrew
+      export PATH=$brew_prefix/bin:$PATH
+      export MANPATH=$brew_prefix/share/man:$MANPATH
+      export CFLAGS="-I$brew_prefix/include $CFLAGS"
+      export LDFLAGS="-L$brew_prefix/lib $LDFLAGS"
+
+      alias diff=colordiff
+      alias grep=ggrep
+      alias zcat=gzcat
+
+      # for Ruby 3.2+
+      # https://koic.hatenablog.com/entry/ruby32-requires-bison3
+      if [ -d "$brew_prefix/opt/bison" ]; then
+        export PATH="$brew_prefix/opt/bison/bin:$PATH"
+      fi
+
+      if [ -d "$brew_prefix/opt/go" ]; then
+        export PATH="$brew_prefix/opt/go/bin:$PATH"
+      fi
+
+      if [ -d "$brew_prefix/opt/libpq" ]; then
+        export PATH=$brew_prefix/opt/libpq/bin:$PATH
+      fi
     fi
     ;;
   Linux)
@@ -115,10 +132,6 @@ fi
 
 
 # === Go
-
-if [ -d "$brew_prefix/opt/go" ]; then
-  export PATH="$brew_prefix/opt/go/bin:$PATH"
-fi
 
 if type go >/dev/null 2>&1; then
   export GOROOT=$(env GOROOT="" go env GOROOT)
@@ -138,8 +151,7 @@ fi
 if [ -d $HOME/.rbenv ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init - zsh)"
-  #export RUBY_CONFIGURE_OPTS="--enable-shared --with-openssl-dir=$(brew --prefix openssl) --with-readline-dir=$(brew --prefix readline) --with-yaml-dir=$(brew --prefix libyaml) $RUBY_CONFIGURE_OPTS"
-  export RUBY_CONFIGURE_OPTS="--enable-shared --with-openssl-dir=${brew_prefix}/opt/openssl --with-readline-dir=${brew_prefix}/opt/readline --with-yaml-dir=${brew_prefix}/opt/libyaml $RUBY_CONFIGURE_OPTS"
+  export RUBY_CONFIGURE_OPTS="--enable-shared $RUBY_CONFIGURE_OPTS"
 fi
 
 
@@ -272,3 +284,5 @@ if [ -d ~/.zshrc.d ]; then
     source $rc
   done
 fi
+
+export PATH=$HOME/bin:$HOME/local/bin:$PATH
