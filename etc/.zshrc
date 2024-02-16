@@ -98,6 +98,7 @@ case "$(uname)" in
       export MANPATH=$brew_prefix/share/man:$MANPATH
       export CFLAGS="-I$brew_prefix/include $CFLAGS"
       export LDFLAGS="-L$brew_prefix/lib $LDFLAGS"
+      export RUBY_CONFIGURE_OPTS="--with-openssl-dir=${brew_prefix}/opt/openssl@1.1"
 
       alias diff=colordiff
       alias grep=ggrep
@@ -148,7 +149,7 @@ fi
 
 # === rbenv
 
-if [ -d $HOME/.rbenv ]; then
+if [ -d $HOME/.rbenv ] && [ $HOME != /home/quipper ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init - zsh)"
   export RUBY_CONFIGURE_OPTS="--enable-shared $RUBY_CONFIGURE_OPTS"

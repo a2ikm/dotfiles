@@ -29,7 +29,7 @@ set backupcopy=yes
 
 highlight JpSpace cterm=underline ctermfg=Red guifg=Red
 au BufRead,BufNew * match JpSpace /　/
-autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\s\+$//e
 
 filetype plugin indent on
 syntax on
