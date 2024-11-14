@@ -3,7 +3,12 @@ export LC_TYPE=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
 export EDITOR=vim
-export PAGER=less
+
+if type tspin >/dev/null 2>&1; then
+  export PAGER=tspin
+else
+  export PAGER=less
+fi
 
 export AWS_REGION=ap-northeast-1
 export BUNDLE_JOBS=4
@@ -155,6 +160,14 @@ if [ -d $HOME/.rbenv ] && [ $HOME != /home/quipper ]; then
   export RUBY_CONFIGURE_OPTS="--enable-shared $RUBY_CONFIGURE_OPTS"
 fi
 
+
+# === nvm
+
+if [ -d $HOME/.nvm ] && [ -d /opt/homebrew/opt/nvm/ ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+fi
 
 # === erlenv
 
