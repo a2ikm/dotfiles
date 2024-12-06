@@ -70,7 +70,7 @@ chpwd()
 # === alias
 
 alias c="dirs -c; clear"
-alias curl="curl --globoff"
+alias curl="curl --globoff --silent"
 alias dc="docker-compose"
 alias g="git"
 alias gg="git grep -In"
