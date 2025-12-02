@@ -69,6 +69,7 @@ chpwd()
 
 # === alias
 
+alias be="bundle exec"
 alias c="dirs -c; clear"
 alias curl="curl --globoff --silent"
 alias dc="docker-compose"
