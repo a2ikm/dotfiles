@@ -11,6 +11,7 @@ link() {
 mkdir -p ~/bin
 
 link bin/kexec ~/bin/kexec
+link bin/gm ~/bin/gm
 
 link etc/.gitconfig ~/.gitconfig
 link etc/.gitignore ~/.gitignore
