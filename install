@@ -48,7 +48,7 @@ case "$(uname)" in
       tig \
       yq
 
-    ln -s /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
+    ln -sf /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
     sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
     ;;
   Linux)
