@@ -50,8 +50,7 @@ case "$(uname)" in
       ripgrep \
       stern \
       tig \
-      yq \
-      k1LoW/tap/git-wt
+      yq
 
     ln -sf /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
     sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
@@ -80,6 +79,8 @@ case "$(uname)" in
     echo "unsupported platform: $(uname)"
     ;;
 esac
+
+bash installers/git-wt.sh
 
 if [ ! -d ~/.rbenv ]; then
   git clone https://github.com/rbenv/rbenv.git ~/.rbenv
