@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+if ! git rev-parse --git-dir > /dev/null 2>&1; then
+  echo "Error: Not a git repository" >&2
+  exit 1
+fi
+
+current_branch=$(git branch --show-current)
+
+if [ -z "$current_branch" ]; then
+  echo "Error: Not on any branch (detached HEAD state)" >&2
+  exit 1
+fi
+
+branches_to_delete=$(git branch --format='%(refname:short)' | grep -v "^${current_branch}$" || true)
+
+if [ -z "$branches_to_delete" ]; then
+  exit 0
+fi
+
+echo "$branches_to_delete" | while read branch; do
+  git branch -D "$branch"
+done

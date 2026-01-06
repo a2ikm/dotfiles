@@ -13,6 +13,7 @@ mkdir -p ~/bin
 mkdir -p ~/.config
 
 link bin/kexec ~/bin/kexec
+link bin/git-sweep ~/bin/git-sweep
 link bin/gm ~/bin/gm
 
 link etc/.gitconfig ~/.gitconfig
