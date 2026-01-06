@@ -49,3 +49,5 @@
 # resize-overlay-duration = 4s 200ms
 
 macos-option-as-alt = true
+
+font-family = "Monaco"
