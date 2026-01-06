@@ -9,7 +9,6 @@ fi
 # Try to checkout branches in priority order: develop, master, main
 for branch in develop master main; do
   if git show-ref --verify --quiet refs/heads/$branch || git show-ref --verify --quiet refs/remotes/origin/$branch; then
-    echo "Checking out $branch branch..."
     git checkout $branch
     exit $?
   fi
