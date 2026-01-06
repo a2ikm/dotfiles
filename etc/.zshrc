@@ -104,7 +104,7 @@ case "$(uname)" in
       export MANPATH=$brew_prefix/share/man:$MANPATH
       export CFLAGS="-I$brew_prefix/include $CFLAGS"
       export LDFLAGS="-L$brew_prefix/lib $LDFLAGS"
-      export RUBY_CONFIGURE_OPTS="--with-openssl-dir=${brew_prefix}/opt/openssl@1.1"
+      export RUBY_CONFIGURE_OPTS="--with-openssl-dir=${brew_prefix}/opt/openssl@3"
 
       alias diff=colordiff
       alias grep=ggrep
