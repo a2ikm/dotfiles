@@ -5,10 +5,12 @@ set -eux
 dotfiles_dir="$(cd "$( dirname "$0" )" && pwd)"
 
 link() {
+  mkdir -p $(dirname "$2")
   ln -sf "$dotfiles_dir/$1" "$2"
 }
 
 mkdir -p ~/bin
+mkdir -p ~/.config
 
 link bin/kexec ~/bin/kexec
 link bin/gm ~/bin/gm
@@ -20,6 +22,8 @@ link etc/.screenrc ~/.screenrc
 link etc/.tigrc ~/.tigrc
 link etc/.vimrc ~/.vimrc
 link etc/.zshrc ~/.zshrc
+
+link config/ghostty/config "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
 
 case "$(uname)" in
   Darwin)
