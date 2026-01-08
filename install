@@ -15,6 +15,7 @@ mkdir -p ~/.config
 link bin/kexec ~/bin/kexec
 link bin/git-sweep ~/bin/git-sweep
 link bin/git-m ~/bin/git-m
+link bin/git-tree ~/bin/git-tree
 
 link etc/.gitconfig ~/.gitconfig
 link etc/.gitignore ~/.gitignore
