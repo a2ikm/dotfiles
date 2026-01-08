@@ -75,7 +75,11 @@ case "$(uname)" in
     sudo apt install -y vim
     sudo apt install -y locales-all
     sudo apt install -y jq
+    sudo apt install -y gh
+    sudo apt install -y nodejs
+    sudo apt install -y npm
 
+    curl -fsSL https://claude.ai/install.sh | bash
     ;;
   *)
     echo "unsupported platform: $(uname)"
