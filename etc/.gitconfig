@@ -62,3 +62,5 @@
 	defaultBranch = main
 [rebase]
   autostash = true
+[wt]
+  basedir = {gitroot}/.git/worktrees
