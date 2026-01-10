@@ -25,6 +25,8 @@ link etc/.tigrc ~/.tigrc
 link etc/.vimrc ~/.vimrc
 link etc/.zshrc ~/.zshrc
 
+link config/claude/settings.json ~/.claude/settings.json
+
 case "$(uname)" in
   Darwin)
     if [ -z "$(type brew)" ]; then
