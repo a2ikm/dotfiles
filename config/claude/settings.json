@@ -1,3 +1,7 @@
 {
-  "language": "Japaese"
+  "language": "Japaese",
+  "attribution": {
+    "commit": false,
+    "pr": false
+  }
 }
