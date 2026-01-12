@@ -6,4 +6,4 @@ tags
 .ignore
 **/.claude/settings.local.json
 **/CLAUDE.local.md
-/.worktrees
+.worktrees
