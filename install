@@ -68,20 +68,24 @@ case "$(uname)" in
       sudo ln -sf /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
     fi
 
-    sudo apt install -y zsh
-    sudo apt install -y less
-    sudo apt install -y peco
-    sudo apt install -y nkf
-    sudo apt install -y tig
-    sudo apt install -y ripgrep
-    sudo apt install -y vim
-    sudo apt install -y locales-all
-    sudo apt install -y jq
-    sudo apt install -y gh
-    sudo apt install -y nodejs
-    sudo apt install -y npm
+    sudo apt install -y \
+      zsh \
+      less \
+      peco \
+      nkf \
+      tig \
+      ripgrep \
+      vim \
+      locales-all \
+      jq \
+      gh \
+      nodejs \
+      npm
 
-    curl -fsSL https://claude.ai/install.sh | bash
+
+    if !(type claude >/dev/null 2>&1); then
+      curl -fsSL https://claude.ai/install.sh | bash
+    fi
     ;;
   *)
     echo "unsupported platform: $(uname)"
