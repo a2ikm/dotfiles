@@ -1,7 +1,11 @@
 {
-  "language": "Japaese",
   "attribution": {
     "commit": "",
     "pr": ""
+  },
+  "defaultMode": "acceptEdits",
+  "language": "Japaese",
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true
   }
 }
