@@ -52,6 +52,7 @@ case "$(uname)" in
       ripgrep \
       stern \
       tig \
+      tmux \
       yq
 
     ln -sf /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
@@ -80,7 +81,8 @@ case "$(uname)" in
       jq \
       gh \
       nodejs \
-      npm
+      npm \
+      tmux
 
 
     if !(type claude >/dev/null 2>&1); then
