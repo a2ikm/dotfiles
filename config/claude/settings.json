@@ -3,9 +3,12 @@
     "commit": "",
     "pr": ""
   },
-  "defaultMode": "acceptEdits",
-  "language": "Japaese",
+  "permissions": {
+    "defaultMode": "acceptEdits"
+  },
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true
-  }
+  },
+  "language": "Japaese",
+  "defaultMode": "acceptEdits"
 }
