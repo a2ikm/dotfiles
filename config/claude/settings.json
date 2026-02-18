@@ -10,5 +10,6 @@
     "gopls-lsp@claude-plugins-official": true
   },
   "language": "Japaese",
-  "defaultMode": "acceptEdits"
+  "defaultMode": "acceptEdits",
+  "model": "opus"
 }
