@@ -24,6 +24,7 @@ link etc/.screenrc ~/.screenrc
 link etc/.tigrc ~/.tigrc
 link etc/.vimrc ~/.vimrc
 link etc/.zshrc ~/.zshrc
+link etc/.tmux.conf ~/.tmux.conf
 
 link config/claude/settings.json ~/.claude/settings.json
 link config/claude/CLAUDE.md ~/.claude/CLAUDE.md

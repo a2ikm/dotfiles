@@ -6,6 +6,17 @@
   "permissions": {
     "defaultMode": "acceptEdits",
     "allow": [
+    ],
+    "deny": [
+      "Bash(bash -c:*)",
+      "Bash(cd:*)",
+      "Bash(git -C:*)",
+      "Bash(git --git-dir:*)",
+      "Bash(git --work-tree:*)",
+      "Bash(git add .:*)",
+      "Bash(git add -A:*)",
+      "Bash(git add --all:*)",
+      "Bash(sudo:*)" 
     ]
   },
   "model": "opus",
