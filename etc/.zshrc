@@ -1,3 +1,7 @@
+if [ -n "$ZSHRC_PROFILE" ]; then
+  zmodload zsh/zprof
+fi
+
 export LANG=en_US.UTF-8
 export LC_TYPE=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
@@ -33,8 +37,13 @@ setopt NO_flow_control
 setopt noflowcontrol
 setopt auto_menu            # show completion menu on succesive tab press
 
-autoload -U compinit
-compinit -u
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+  compinit
+  touch ~/.zcompdump
+else
+  compinit -C
+fi
 
 unset zle_bracketed_paste # https://github.com/peco/peco/issues/417#issuecomment-289080269
 # bindkey "^?" vi-backward-kill-word
@@ -43,7 +52,7 @@ unset zle_bracketed_paste # https://github.com/peco/peco/issues/417#issuecomment
 # === prompt
 
 _set_env_git_current_branch() {
-  GIT_CURRENT_BRANCH=$( git branch &>/dev/null | grep '^\*' | cut -b 3- )
+  GIT_CURRENT_BRANCH=$( git rev-parse --abbrev-ref HEAD 2>/dev/null )
 }
 
 _update_prompt () {
@@ -273,3 +282,7 @@ if [ -d ~/.zshrc.d ]; then
 fi
 
 export PATH=$HOME/bin:$HOME/local/bin:$PATH
+
+if [ -n "$ZSHRC_PROFILE" ]; then
+  zprof
+fi
