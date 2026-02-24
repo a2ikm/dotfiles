@@ -47,7 +47,7 @@ _set_env_git_current_branch() {
 }
 
 _update_prompt () {
-  if [ "`git ls-files 2>/dev/null`" ]; then
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
     PROMPT="%F{blue}%n@%m%f %B%F{064}%2~%f%b %f%F{038}${GIT_CURRENT_BRANCH}%f%F{064}%f%b %F{yellow}$%f "
   else
     PROMPT="%F{blue}%n@%m%f %B%F{064}%2~%f%b %F{yellow}$%f "
@@ -149,14 +149,6 @@ if type go >/dev/null 2>&1; then
   export GOPATH=$HOME
 fi
 
-# === anyenv
-
-if [ -d $HOME/.anyenv ]; then
-  export PATH="$HOME/.anyenv/bin:$PATH"
-  eval "$(anyenv init -)"
-fi
-
-
 # === rbenv
 
 if [ -d $HOME/.rbenv ] && [ $HOME != /home/quipper ]; then
@@ -174,20 +166,6 @@ if [ -d $HOME/.nvm ] && [ -d /opt/homebrew/opt/nvm/ ]; then
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 fi
 
-# === erlenv
-
-if [ -d $HOME/.anyenv/envs/erlenv ]; then
-  export PATH="$HOME/.anyenv/envs/erlenv/bin:$PATH"
-  eval "$(erlenv init -)"
-fi
-
-
-# === exenv
-
-if [ -d $HOME/.anyenv/envs/exenv ]; then
-  export PATH="$HOME/.anyenv/envs/exenv/bin:$PATH"
-  eval "$(exenv init -)"
-fi
 
 
 # === Kubernetes
