@@ -242,24 +242,23 @@ stack: $LBUFFER"
 zle -N show_buffer_stack
 bindkey '^Q' show_buffer_stack
 
-function peco-select-file() {
-  local selected=$(find . -not -path "./.git*" -a -not -path "./.yarn*" -a -not -path "*/node_modules/*"-a -not -name "*.swp" -a -not -name ".DS_Store"| peco)
+function fzf-select-file() {
+  local selected=$(find . -not -path "./.git*" -a -not -path "./.yarn*" -a -not -path "*/node_modules/*" -a -not -name "*.swp" -a -not -name ".DS_Store" | fzf --layout=reverse --info=hidden)
   BUFFER="$LBUFFER$selected"
   CURSOR=$#BUFFER
 }
-zle -N peco-select-file
-bindkey '^f' peco-select-file
+zle -N fzf-select-file
+bindkey '^f' fzf-select-file
 
-function peco-select-git-branch() {
-  local selected=$(git branch | sed 's/^. //' | peco)
+function fzf-select-git-branch() {
+  local selected=$(git branch | sed 's/^. //' | fzf --layout=reverse --info=hidden)
   BUFFER="$LBUFFER$selected"
   CURSOR=$#BUFFER
 }
-zle -N peco-select-git-branch
-bindkey '^b' peco-select-git-branch
+zle -N fzf-select-git-branch
+bindkey '^b' fzf-select-git-branch
 
-# http://blog.kenjiskywalker.org/blog/2014/06/12/peco/
-function peco-select-history() {
+function fzf-select-history() {
     local tac
     if which tac > /dev/null; then
         tac="tac"
@@ -269,29 +268,22 @@ function peco-select-history() {
     BUFFER=$(history -n 1 | \
         uniq | \
         eval $tac | \
-        peco --query "$LBUFFER")
+        fzf --layout=reverse --info=hidden --query "$LBUFFER")
     CURSOR=$#BUFFER
-    #zle clear-screen
 }
-zle -N peco-select-history
-bindkey '^r' peco-select-history
+zle -N fzf-select-history
+bindkey '^r' fzf-select-history
 
-# http://r7kamura.github.io/2014/06/21/ghq.html
-function pecot() {
-  peco | while read LINE; do $@ $LINE; done
-}
-
-function peco-select-ghq-list() {
-  ghq list -p
-}
-
-function peco-select-ghq() {
-  peco-select-ghq-list | pecot cd
+function fzf-select-ghq() {
+  local selected=$(ghq list -p | fzf --layout=reverse --info=hidden)
+  if [ -n "$selected" ]; then
+    cd "$selected"
+  fi
   zle reset-prompt
 }
 
-zle -N peco-select-ghq
-bindkey '^]' peco-select-ghq
+zle -N fzf-select-ghq
+bindkey '^]' fzf-select-ghq
 
 if [ -e "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then
   source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
