@@ -4,12 +4,14 @@
     "pr": ""
   },
   "permissions": {
-    "defaultMode": "acceptEdits"
+    "defaultMode": "acceptEdits",
+    "allow": [
+    ]
   },
+  "model": "opus",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true
   },
   "language": "Japaese",
-  "defaultMode": "acceptEdits",
-  "model": "opus"
+  "defaultMode": "acceptEdits"
 }
