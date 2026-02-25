@@ -6,6 +6,10 @@
   "permissions": {
     "defaultMode": "acceptEdits",
     "allow": [
+      "Bash(echo:*)",
+      "Bash(ls:*)",
+      "Bash(git cherry-pick:*)",
+      "Bash(gh pr create:*)"
     ],
     "deny": [
       "Bash(bash -c:*)",
