@@ -15,7 +15,7 @@
       "Bash(gh pr create:*)",
       "Bash(gh pr view:*)",
       "Bash(head:*)",
-      "Bash(tail:*)"
+      "Bash(tail:*)",
       "Bash(wc:*)"
     ],
     "deny": [
