@@ -6,10 +6,17 @@
   "permissions": {
     "defaultMode": "acceptEdits",
     "allow": [
+      "Bash(cat:*)",
       "Bash(echo:*)",
       "Bash(ls:*)",
       "Bash(git cherry-pick:*)",
-      "Bash(gh pr create:*)"
+      "Bash(git show:*)",
+      "Bash(gh issue list:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr view:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)"
+      "Bash(wc:*)"
     ],
     "deny": [
       "Bash(bash -c:*)",
