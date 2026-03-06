@@ -278,13 +278,12 @@ function banana-add() {
   zle reset-prompt
   if [ -n "$selected" ]; then
     worktree_path=$(command banana add "$selected")
-    local exit_code=$?
-    if [ $exit_code -eq 0 ] && [ -n "$worktree_path" ] && [ -d "$worktree_path" ]; then
+    if [ -n "$worktree_path" ] && [ -d "$worktree_path" ]; then
       cd "$worktree_path"
-      claude "@.banana-task を読み込んでください。そして次に何をするか質問してください。"
+      clear
     fi
-    return $exit_code
   fi
+  zle reset-prompt
 }
 zle -N banana-add
 bindkey '^e' banana-add
