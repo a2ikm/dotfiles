@@ -53,3 +53,4 @@ macos-option-as-alt = true
 font-family = "Monaco"
 
 keybind = command+enter=unbind
+keybind = ctrl+left_bracket=unbind

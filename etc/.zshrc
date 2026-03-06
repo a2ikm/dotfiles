@@ -1,7 +1,3 @@
-if [ -n "$ZSHRC_PROFILE" ]; then
-  zmodload zsh/zprof
-fi
-
 export LANG=en_US.UTF-8
 export LC_TYPE=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
@@ -94,6 +90,8 @@ alias t=tig
 alias v=vim
 alias cgrep="grep --color=always"
 alias k=kubectl
+
+export PATH=$HOME/bin:$HOME/local/bin:$PATH
 
 case "$(uname)" in
   Darwin)
@@ -275,14 +273,34 @@ if [ -e "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then
   source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 fi
 
+function banana-add() {
+  local selected=$(ghq list -p | fzf --layout=reverse --info=hidden)
+  zle reset-prompt
+  if [ -n "$selected" ]; then
+    worktree_path=$(command banana add "$selected")
+    local exit_code=$?
+    if [ $exit_code -eq 0 ] && [ -n "$worktree_path" ] && [ -d "$worktree_path" ]; then
+      cd "$worktree_path"
+      claude "@.banana-task を読み込んでください。そして次に何をするか質問してください。"
+    fi
+    return $exit_code
+  fi
+}
+zle -N banana-add
+bindkey '^e' banana-add
+
+function fzf-select-banana-worktree() {
+  local selected=$(banana list | fzf --layout=reverse --info=hidden)
+  if [ -n "$selected" ]; then
+    cd "$selected"
+  fi
+  zle reset-prompt
+}
+zle -N fzf-select-banana-worktree
+bindkey '^[' fzf-select-banana-worktree
+
 if [ -d ~/.zshrc.d ]; then
   for rc in $(ls -1 ~/.zshrc.d/*.zsh); do
     source $rc
   done
-fi
-
-export PATH=$HOME/bin:$HOME/local/bin:$PATH
-
-if [ -n "$ZSHRC_PROFILE" ]; then
-  zprof
 fi
