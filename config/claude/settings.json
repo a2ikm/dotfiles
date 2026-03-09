@@ -4,7 +4,6 @@
     "pr": ""
   },
   "permissions": {
-    "defaultMode": "acceptEdits",
     "allow": [
       "Bash(bundle:*)",
       "Bash(cat:*)",
@@ -41,8 +40,9 @@
       "Bash(git add .:*)",
       "Bash(git add -A:*)",
       "Bash(git add --all:*)",
-      "Bash(sudo:*)" 
-    ]
+      "Bash(sudo:*)"
+    ],
+    "defaultMode": "acceptEdits"
   },
   "model": "opus",
   "enabledPlugins": {
