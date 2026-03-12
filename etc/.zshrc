@@ -290,14 +290,22 @@ bindkey '^e' banana-add
 
 function fzf-select-banana-worktree() {
   local selected=$(banana list | fzf --layout=reverse --info=hidden)
+  BUFFER="$LBUFFER$selected"
+  CURSOR=$#BUFFER
+}
+zle -N fzf-select-banana-worktree
+bindkey '^t' fzf-select-banana-worktree
+
+function fzf-select-banana() {
+  local selected=$(banana list | fzf --layout=reverse --info=hidden)
   if [ -n "$selected" ]; then
     cd "$selected"
   fi
   zle reset-prompt
 }
-zle -N fzf-select-banana-worktree
-bindkey '^[' fzf-select-banana-worktree
-bindkey '\e[91;5u' fzf-select-banana-worktree # Ghostty (kitty keyboard protocol) 用。Ctrl+[ が \e ではなく CSI u シーケンスで送信されるため。
+zle -N fzf-select-banana
+bindkey '^[' fzf-select-banana
+bindkey '\e[91;5u' fzf-select-banana # Ghostty (kitty keyboard protocol) 用。Ctrl+[ が \e ではなく CSI u シーケンスで送信されるため。
 
 if [ -d ~/.zshrc.d ]; then
   for rc in $(ls -1 ~/.zshrc.d/*.zsh); do
