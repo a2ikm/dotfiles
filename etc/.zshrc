@@ -297,6 +297,7 @@ function fzf-select-banana-worktree() {
 }
 zle -N fzf-select-banana-worktree
 bindkey '^[' fzf-select-banana-worktree
+bindkey '\e[91;5u' fzf-select-banana-worktree # Ghostty (kitty keyboard protocol) 用。Ctrl+[ が \e ではなく CSI u シーケンスで送信されるため。
 
 if [ -d ~/.zshrc.d ]; then
   for rc in $(ls -1 ~/.zshrc.d/*.zsh); do
