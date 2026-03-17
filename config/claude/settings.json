@@ -15,19 +15,24 @@
       "Bash(git cherry-pick:*)",
       "Bash(git commit*)",
       "Bash(git diff:*)",
+      "Bash(git fetch:*)",
       "Bash(git log:*)",
       "Bash(git show:*)",
       "Bash(git push:*)",
       "Bash(gh api:*)",
       "Bash(gh issue list:*)",
       "Bash(gh issue view:*)",
+      "Bash(gh issue edit:*)",
       "Bash(gh pr create:*)",
+      "Bash(gh pr diff:*)",
       "Bash(gh pr view:*)",
       "Bash(gh project item-list:*)",
+      "Bash(gh run view:*)",
       "Bash(go build:*)",
       "Bash(go test:*)",
       "Bash(grep:*)",
       "Bash(head:*)",
+      "Bash(jq:*)",
       "Bash(ruby:*)",
       "Bash(tail:*)",
       "Bash(wc:*)",
@@ -46,9 +51,10 @@
     ],
     "defaultMode": "acceptEdits"
   },
-  "model": "opus",
+  "model": "opus[1m]",
   "enabledPlugins": {
-    "gopls-lsp@claude-plugins-official": true
+    "gopls-lsp@claude-plugins-official": true,
+    "ruby-lsp@claude-plugins-official": true
   },
   "language": "Japaese",
   "defaultMode": "acceptEdits"
