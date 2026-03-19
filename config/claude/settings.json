@@ -8,6 +8,7 @@
       "Bash(awk:*)",
       "Bash(bundle:*)",
       "Bash(cat:*)",
+      "Bash(cd:*)",
       "Bash(echo:*)",
       "Bash(find:*)",
       "Bash(ls:*)",
@@ -41,7 +42,6 @@
     ],
     "deny": [
       "Bash(bash -c:*)",
-      "Bash(cd:*)",
       "Bash(git -C:*)",
       "Bash(git --git-dir:*)",
       "Bash(git --work-tree:*)",
