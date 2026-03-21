@@ -7,10 +7,12 @@
     "allow": [
       "Bash(awk:*)",
       "Bash(bundle:*)",
+      "Bash(cargo:*)",
       "Bash(cat:*)",
       "Bash(cd:*)",
       "Bash(echo:*)",
       "Bash(find:*)",
+      "Bash(go test:*)",
       "Bash(ls:*)",
       "Bash(git add:*)",
       "Bash(git checkout:*)",
@@ -36,9 +38,11 @@
       "Bash(head:*)",
       "Bash(jq:*)",
       "Bash(ruby:*)",
+      "Bash(sed:*)",
       "Bash(tail:*)",
       "Bash(wc:*)",
-      "Bash(xargs:*)"
+      "Bash(xargs:*)",
+      "Bash(xcodebuild:*)"
     ],
     "deny": [
       "Bash(bash -c:*)",
@@ -55,7 +59,10 @@
   "model": "opus[1m]",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
-    "ruby-lsp@claude-plugins-official": true
+    "ruby-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true
   },
   "language": "Japaese",
   "defaultMode": "acceptEdits"
