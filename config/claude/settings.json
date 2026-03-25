@@ -33,6 +33,7 @@
       "Bash(gh project item-list:*)",
       "Bash(gh run view:*)",
       "Bash(go build:*)",
+      "Bash(go list:*)",
       "Bash(go test:*)",
       "Bash(grep:*)",
       "Bash(head:*)",
