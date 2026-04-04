@@ -27,7 +27,7 @@ link etc/.screenrc ~/.screenrc
 link tig/config "$XDG_CONFIG_HOME/tig/config"
 link vim/vimrc "$XDG_CONFIG_HOME/vim/vimrc"
 link etc/.zshrc ~/.zshrc
-link etc/.tmux.conf ~/.tmux.conf
+link tmux/tmux.conf "$XDG_CONFIG_HOME/tmux/tmux.conf"
 
 link claude/settings.json ~/.claude/settings.json
 link claude/CLAUDE.md ~/.claude/CLAUDE.md
