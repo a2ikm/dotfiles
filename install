@@ -19,8 +19,8 @@ link bin/git-sweep ~/bin/git-sweep
 link bin/git-m ~/bin/git-m
 link bin/git-tree ~/bin/git-tree
 
-link etc/.gitconfig ~/.gitconfig
-link etc/.gitignore ~/.gitignore
+link git/config "$XDG_CONFIG_HOME/git/config"
+link git/ignore "$XDG_CONFIG_HOME/git/ignore"
 link etc/.irbrc ~/.irbrc
 link etc/.screenrc ~/.screenrc
 link etc/.tigrc ~/.tigrc
