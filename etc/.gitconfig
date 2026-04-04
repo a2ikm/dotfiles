@@ -29,8 +29,6 @@
 [branch "develop"]
   mergeoptions = --no-ff
   rebase = true
-[credential]
-	helper = osxkeychain
 [web]
   browser = google-chrome
 [browse-remote "github.com"]
@@ -62,8 +60,8 @@
 	defaultBranch = main
 [rebase]
   autostash = true
-[wt]
-  basedir = .worktrees
+[credential]
+	helper = osxkeychain
 [credential "https://github.com"]
 	helper = 
 	helper = !gh auth git-credential
