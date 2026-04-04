@@ -90,6 +90,7 @@ alias t=tig
 alias v=vim
 alias cgrep="grep --color=always"
 alias k=kubectl
+alias fzf="fzf --cycle --layout=reverse --info=hidden"
 
 export PATH=$HOME/bin:$HOME/local/bin:$PATH
 
@@ -226,7 +227,7 @@ zle -N show_buffer_stack
 bindkey '^Q' show_buffer_stack
 
 function fzf-select-file() {
-  local selected=$(find . -not -path "./.git*" -a -not -path "./.yarn*" -a -not -path "*/node_modules/*" -a -not -name "*.swp" -a -not -name ".DS_Store" | fzf --layout=reverse --info=hidden)
+  local selected=$(find . -not -path "./.git*" -a -not -path "./.yarn*" -a -not -path "*/node_modules/*" -a -not -name "*.swp" -a -not -name ".DS_Store" | fzf)
   BUFFER="$LBUFFER$selected"
   CURSOR=$#BUFFER
 }
@@ -234,7 +235,7 @@ zle -N fzf-select-file
 bindkey '^f' fzf-select-file
 
 function fzf-select-git-branch() {
-  local selected=$(git branch | sed 's/^. //' | fzf --layout=reverse --info=hidden)
+  local selected=$(git branch | sed 's/^. //' | fzf)
   BUFFER="$LBUFFER$selected"
   CURSOR=$#BUFFER
 }
@@ -251,14 +252,14 @@ function fzf-select-history() {
     BUFFER=$(history -n 1 | \
         uniq | \
         eval $tac | \
-        fzf --layout=reverse --info=hidden --query "$LBUFFER")
+        fzf --query "$LBUFFER")
     CURSOR=$#BUFFER
 }
 zle -N fzf-select-history
 bindkey '^r' fzf-select-history
 
 function fzf-select-ghq() {
-  local selected=$(ghq list -p | fzf --layout=reverse --info=hidden)
+  local selected=$(ghq list -p | fzf)
   if [ -n "$selected" ]; then
     cd "$selected"
   fi
@@ -274,7 +275,7 @@ if [ -e "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then
 fi
 
 function banana-add() {
-  local selected=$(ghq list -p | fzf --layout=reverse --info=hidden)
+  local selected=$(ghq list -p | fzf)
   zle reset-prompt
   if [ -n "$selected" ]; then
     worktree_path=$(command banana add "$selected")
@@ -289,23 +290,12 @@ zle -N banana-add
 bindkey '^e' banana-add
 
 function fzf-select-banana-worktree() {
-  local selected=$(banana list | fzf --layout=reverse --info=hidden)
+  local selected=$(banana list | fzf)
   BUFFER="$LBUFFER$selected"
   CURSOR=$#BUFFER
 }
 zle -N fzf-select-banana-worktree
 bindkey '^t' fzf-select-banana-worktree
-
-# function fzf-select-banana() {
-#   local selected=$(banana list | fzf --layout=reverse --info=hidden)
-#   if [ -n "$selected" ]; then
-#     cd "$selected"
-#   fi
-#   zle reset-prompt
-# }
-# zle -N fzf-select-banana
-# bindkey '^[' fzf-select-banana
-# bindkey '\e[91;5u' fzf-select-banana # Ghostty (kitty keyboard protocol) 用。Ctrl+[ が \e ではなく CSI u シーケンスで送信されるため。
 
 claude() {
   command claude "$@"

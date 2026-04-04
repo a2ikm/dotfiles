@@ -60,7 +60,6 @@
     ],
     "defaultMode": "acceptEdits"
   },
-  "model": "opus",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "ruby-lsp@claude-plugins-official": true,
