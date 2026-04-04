@@ -1,3 +1,5 @@
+# vim: ft=tigrc
+
 # main viewの左端にコミットIDを表示する
 set main-view = id date author commit-title:graph=yes,refs=yes
 set wrap-lines = yes
