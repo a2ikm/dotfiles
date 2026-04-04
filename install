@@ -23,11 +23,12 @@ link git/config "$XDG_CONFIG_HOME/git/config"
 link git/ignore "$XDG_CONFIG_HOME/git/ignore"
 link ghostty/config "$XDG_CONFIG_HOME/ghostty/config"
 link irb/irbrc "$XDG_CONFIG_HOME/irb/irbrc"
-link etc/.screenrc ~/.screenrc
 link tig/config "$XDG_CONFIG_HOME/tig/config"
 link vim/vimrc "$XDG_CONFIG_HOME/vim/vimrc"
-link etc/.zshrc ~/.zshrc
 link tmux/tmux.conf "$XDG_CONFIG_HOME/tmux/tmux.conf"
+
+link screen/screenrc ~/.screenrc
+link zsh/zshrc ~/.zshrc
 
 link claude/settings.json ~/.claude/settings.json
 link claude/CLAUDE.md ~/.claude/CLAUDE.md
