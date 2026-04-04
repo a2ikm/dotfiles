@@ -21,6 +21,7 @@ link bin/git-tree ~/bin/git-tree
 
 link git/config "$XDG_CONFIG_HOME/git/config"
 link git/ignore "$XDG_CONFIG_HOME/git/ignore"
+link ghostty/config "$XDG_CONFIG_HOME/ghostty/config"
 link etc/.irbrc ~/.irbrc
 link etc/.screenrc ~/.screenrc
 link etc/.tigrc ~/.tigrc
@@ -63,7 +64,6 @@ case "$(uname)" in
     sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
     link git/config.darwin "$XDG_CONFIG_HOME/git/config.local"
-    link config/ghostty/config "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
     ;;
   Linux)
     link git/config.linux "$XDG_CONFIG_HOME/git/config.local"
