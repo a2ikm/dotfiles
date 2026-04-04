@@ -2,6 +2,8 @@ export LANG=en_US.UTF-8
 export LC_TYPE=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
+export XDG_CONFIG_HOME="${HOMR}/.config"
+
 export EDITOR=vim
 
 if type tspin >/dev/null 2>&1; then
