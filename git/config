@@ -1,6 +1,6 @@
 # vim: set ft=gitconfig:
 [include]
-  path = ~/.gitconfig.local
+  path = ~/.config/git/config.local
 [alias]
   amend = commit --amend
   b = branch
