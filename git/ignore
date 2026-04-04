@@ -1,3 +1,4 @@
+# vim: set ft=gitignore:
 *.swp
 .DS_Store
 .~lock*

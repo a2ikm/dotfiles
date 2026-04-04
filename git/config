@@ -1,3 +1,4 @@
+# vim: set ft=gitconfig:
 [include]
   path = ~/.gitconfig.local
 [alias]
