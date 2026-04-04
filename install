@@ -62,9 +62,12 @@ case "$(uname)" in
     ln -sf /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight ~/bin/diff-highlight
     sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
+    link git/config.darwin "$XDG_CONFIG_HOME/git/config.local"
     link config/ghostty/config "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
     ;;
   Linux)
+    link git/config.linux "$XDG_CONFIG_HOME/git/config.local"
+
     if [ -f  /usr/share/doc/git/contrib/diff-highlight/diff-highlight ]; then
       sudo ln -sf /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
     elif [ -d  /usr/share/doc/git/contrib/diff-highlight ]; then

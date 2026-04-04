@@ -61,11 +61,3 @@
 	defaultBranch = main
 [rebase]
   autostash = true
-[credential]
-	helper = osxkeychain
-[credential "https://github.com"]
-	helper = 
-	helper = !gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !gh auth git-credential

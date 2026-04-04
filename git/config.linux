@@ -1,0 +1,3 @@
+# vim: set ft=gitconfig:
+[credential]
+	helper = !gh auth git-credential
