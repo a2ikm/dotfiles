@@ -269,11 +269,6 @@ function fzf-select-ghq() {
 zle -N fzf-select-ghq
 bindkey '^]' fzf-select-ghq
 
-if [ -e "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then
-  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-fi
-
 function banana-add() {
   local selected=$(ghq list -p | fzf)
   zle reset-prompt
