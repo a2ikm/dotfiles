@@ -25,7 +25,7 @@ link ghostty/config "$XDG_CONFIG_HOME/ghostty/config"
 link irb/irbrc "$XDG_CONFIG_HOME/irb/irbrc"
 link etc/.screenrc ~/.screenrc
 link tig/config "$XDG_CONFIG_HOME/tig/config"
-link etc/.vimrc ~/.vimrc
+link vim/vimrc "$XDG_CONFIG_HOME/vim/vimrc"
 link etc/.zshrc ~/.zshrc
 link etc/.tmux.conf ~/.tmux.conf
 
