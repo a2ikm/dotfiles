@@ -269,21 +269,6 @@ function fzf-select-ghq() {
 zle -N fzf-select-ghq
 bindkey '^]' fzf-select-ghq
 
-function banana-add() {
-  local selected=$(ghq list -p | fzf)
-  zle reset-prompt
-  if [ -n "$selected" ]; then
-    worktree_path=$(command banana add "$selected")
-    if [ -n "$worktree_path" ] && [ -d "$worktree_path" ]; then
-      cd "$worktree_path"
-      clear
-    fi
-  fi
-  zle reset-prompt
-}
-zle -N banana-add
-bindkey '^e' banana-add
-
 function fzf-select-banana-worktree() {
   local selected=$(banana list | fzf)
   BUFFER="$LBUFFER$selected"
