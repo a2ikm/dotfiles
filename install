@@ -22,7 +22,7 @@ link bin/git-tree ~/bin/git-tree
 link git/config "$XDG_CONFIG_HOME/git/config"
 link git/ignore "$XDG_CONFIG_HOME/git/ignore"
 link ghostty/config "$XDG_CONFIG_HOME/ghostty/config"
-link etc/.irbrc ~/.irbrc
+link irb/irbrc "$XDG_CONFIG_HOME/irb/irbrc"
 link etc/.screenrc ~/.screenrc
 link etc/.tigrc ~/.tigrc
 link etc/.vimrc ~/.vimrc
