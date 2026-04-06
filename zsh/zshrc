@@ -273,13 +273,16 @@ function fzf-select-ghq() {
 zle -N fzf-select-ghq
 bindkey '^]' fzf-select-ghq
 
-function fzf-select-banana-worktree() {
-  local selected=$(banana list | fzf)
-  BUFFER="$LBUFFER$selected"
-  CURSOR=$#BUFFER
+function fzf-select-banana() {
+  local selected=$(banana list | fzf --layout=reverse --info=hidden)
+  if [ -n "$selected" ]; then
+    cd "$selected"
+  fi
+  zle reset-prompt
 }
-zle -N fzf-select-banana-worktree
-bindkey '^t' fzf-select-banana-worktree
+zle -N fzf-select-banana
+bindkey '^[' fzf-select-banana
+bindkey '\e[91;5u' fzf-select-banana # Ghostty (kitty keyboard protocol) 用。Ctrl+[ が \e ではなく CSI u シーケンスで送信されるため。
 
 claude() {
   command claude "$@"
