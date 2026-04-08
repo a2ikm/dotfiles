@@ -274,7 +274,7 @@ zle -N fzf-select-ghq
 bindkey '^]' fzf-select-ghq
 
 function fzf-select-banana() {
-  local selected=$(banana list | fzf --layout=reverse --info=hidden)
+  local selected=$(banana list-all | fzf --layout=reverse --info=hidden)
   if [ -n "$selected" ]; then
     cd "$selected"
   fi
