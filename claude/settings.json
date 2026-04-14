@@ -71,5 +71,8 @@
     "skill-creator@claude-plugins-official": true
   },
   "language": "Japaese",
+  "sandbox": {
+    "enableWeakerNetworkIsolation": true
+  },
   "defaultMode": "acceptEdits"
 }

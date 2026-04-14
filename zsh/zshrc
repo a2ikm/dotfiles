@@ -94,7 +94,7 @@ alias t=tig
 alias v=vim
 alias cgrep="grep --color=always"
 alias k=kubectl
-alias fzf="fzf --cycle --layout=reverse --info=hidden"
+alias fzf="fzf --cycle --no-sort --layout=reverse --info=hidden"
 
 export PATH=$HOME/bin:$HOME/local/bin:$PATH
 
