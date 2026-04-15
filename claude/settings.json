@@ -59,6 +59,7 @@
       "Bash(git add .:*)",
       "Bash(git add -A:*)",
       "Bash(git add --all:*)",
+      "Bash(git repo create:*)",
       "Bash(sudo:*)"
     ],
     "defaultMode": "acceptEdits"
