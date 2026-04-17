@@ -94,7 +94,8 @@ alias t=tig
 alias v=vim
 alias cgrep="grep --color=always"
 alias k=kubectl
-alias fzf="fzf --cycle --no-sort --layout=reverse --info=hidden"
+
+# alias peco="fzf --cycle --no-sort --layout=reverse --info=hidden"
 
 export PATH=$HOME/bin:$HOME/local/bin:$PATH
 
@@ -230,23 +231,23 @@ stack: $LBUFFER"
 zle -N show_buffer_stack
 bindkey '^Q' show_buffer_stack
 
-function fzf-select-file() {
-  local selected=$(find . -not -path "./.git*" -a -not -path "./.yarn*" -a -not -path "*/node_modules/*" -a -not -name "*.swp" -a -not -name ".DS_Store" | fzf)
+function peco-select-file() {
+  local selected=$(find . -not -path "./.git*" -a -not -path "./.yarn*" -a -not -path "*/node_modules/*" -a -not -name "*.swp" -a -not -name ".DS_Store" | peco)
   BUFFER="$LBUFFER$selected"
   CURSOR=$#BUFFER
 }
-zle -N fzf-select-file
-bindkey '^f' fzf-select-file
+zle -N peco-select-file
+bindkey '^f' peco-select-file
 
-function fzf-select-git-branch() {
-  local selected=$(git branch | sed 's/^. //' | fzf)
+function peco-select-git-branch() {
+  local selected=$(git branch | sed 's/^. //' | peco)
   BUFFER="$LBUFFER$selected"
   CURSOR=$#BUFFER
 }
-zle -N fzf-select-git-branch
-bindkey '^b' fzf-select-git-branch
+zle -N peco-select-git-branch
+bindkey '^b' peco-select-git-branch
 
-function fzf-select-history() {
+function peco-select-history() {
     local tac
     if which tac > /dev/null; then
         tac="tac"
@@ -256,33 +257,33 @@ function fzf-select-history() {
     BUFFER=$(history -n 1 | \
         uniq | \
         eval $tac | \
-        fzf --query "$LBUFFER")
+        peco --query "$LBUFFER")
     CURSOR=$#BUFFER
 }
-zle -N fzf-select-history
-bindkey '^r' fzf-select-history
+zle -N peco-select-history
+bindkey '^r' peco-select-history
 
-function fzf-select-ghq() {
-  local selected=$(ghq list -p | fzf)
+function peco-select-ghq() {
+  local selected=$(ghq list -p | peco)
   if [ -n "$selected" ]; then
     cd "$selected"
   fi
   zle reset-prompt
 }
 
-zle -N fzf-select-ghq
-bindkey '^]' fzf-select-ghq
+zle -N peco-select-ghq
+bindkey '^]' peco-select-ghq
 
-function fzf-select-banana() {
-  local selected=$(banana list-all | fzf --layout=reverse --info=hidden)
+function peco-select-banana() {
+  local selected=$(banana list-all | peco)
   if [ -n "$selected" ]; then
     cd "$selected"
   fi
   zle reset-prompt
 }
-zle -N fzf-select-banana
-bindkey '^[' fzf-select-banana
-bindkey '\e[91;5u' fzf-select-banana # Ghostty (kitty keyboard protocol) 用。Ctrl+[ が \e ではなく CSI u シーケンスで送信されるため。
+zle -N peco-select-banana
+bindkey '^[' peco-select-banana
+bindkey '\e[91;5u' peco-select-banana # Ghostty (kitty keyboard protocol) 用。Ctrl+[ が \e ではなく CSI u シーケンスで送信されるため。
 
 claude() {
   command claude "$@"
