@@ -290,6 +290,13 @@ claude() {
   printf '\e[<u'
 }
 
+wt() {
+  local dir=$(banana add "$1")
+  if [ -n "$dir" ]; then
+    cd "$dir"
+  fi
+}
+
 if [ -d ~/.zshrc.d ]; then
   for rc in $(ls -1 ~/.zshrc.d/*.zsh); do
     source $rc
