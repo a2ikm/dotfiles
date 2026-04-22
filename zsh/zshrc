@@ -291,7 +291,7 @@ claude() {
 }
 
 wt() {
-  local dir=$(banana add "$1")
+  local dir=$(banana add "$1" --base .)
   if [ -n "$dir" ]; then
     cd "$dir"
   fi
