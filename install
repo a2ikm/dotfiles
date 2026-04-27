@@ -41,7 +41,7 @@ case "$(uname)" in
     brew install \
       awscli \
       colordiff \
-      fzf \
+      peco \
       gh \
       ghq \
       git \
@@ -81,7 +81,6 @@ case "$(uname)" in
     sudo apt install -y \
       zsh \
       less \
-      fzf \
       nkf \
       tig \
       ripgrep \
@@ -96,6 +95,26 @@ case "$(uname)" in
 
     if !(type claude >/dev/null 2>&1); then
       curl -fsSL https://claude.ai/install.sh | bash
+    fi
+
+    if !(type peco >/dev/null 2>&1); then
+      case "$(uname -m)" in
+        x86_64)  peco_arch="amd64" ;;
+        aarch64) peco_arch="arm64" ;;
+        armv7l)  peco_arch="arm" ;;
+        i386|i686) peco_arch="386" ;;
+        *) echo "unsupported architecture for peco: $(uname -m)"; exit 1 ;;
+      esac
+
+      peco_url="$(curl -fsSL https://api.github.com/repos/peco/peco/releases/latest \
+        | jq -r ".assets[] | select(.name == \"peco_linux_${peco_arch}.tar.gz\") | .browser_download_url")"
+
+      peco_tmp="$(mktemp -d)"
+      curl -fsSL "$peco_url" -o "$peco_tmp/peco.tar.gz"
+      tar -xzf "$peco_tmp/peco.tar.gz" -C "$peco_tmp"
+      mv "$peco_tmp/peco_linux_${peco_arch}/peco" ~/bin/peco
+      chmod +x ~/bin/peco
+      rm -rf "$peco_tmp"
     fi
     ;;
   *)
