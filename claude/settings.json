@@ -35,6 +35,7 @@
       "Bash(gh run view:*)",
       "Bash(gh search:*)",
       "Bash(go build:*)",
+      "Bash(go doc:*)",
       "Bash(go get:*)",
       "Bash(go list:*)",
       "Bash(go mod:*)",
