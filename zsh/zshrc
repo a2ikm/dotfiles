@@ -158,6 +158,7 @@ fi
 # === Go
 
 if type go >/dev/null 2>&1; then
+  export GOTOOLCHAIN=local
   export GOROOT=$(env GOROOT="" go env GOROOT)
   export GOPATH=$HOME
 fi
