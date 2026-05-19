@@ -10,6 +10,7 @@
       "Bash(cargo:*)",
       "Bash(cat:*)",
       "Bash(cd:*)",
+      "Bash(docker compose:*)",
       "Bash(echo:*)",
       "Bash(find:*)",
       "Bash(ls:*)",
@@ -66,6 +67,7 @@
     ],
     "defaultMode": "acceptEdits"
   },
+  "model": "opus",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "ruby-lsp@claude-plugins-official": true,
@@ -77,5 +79,6 @@
   "sandbox": {
     "enableWeakerNetworkIsolation": true
   },
+  "skipAutoPermissionPrompt": true,
   "defaultMode": "acceptEdits"
 }
