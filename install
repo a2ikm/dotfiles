@@ -101,18 +101,22 @@ case "$(uname)" in
       case "$(uname -m)" in
         x86_64)  peco_arch="amd64" ;;
         aarch64) peco_arch="arm64" ;;
-        armv7l)  peco_arch="arm" ;;
+        armv7l)  peco_arch="armv6" ;;
         i386|i686) peco_arch="386" ;;
         *) echo "unsupported architecture for peco: $(uname -m)"; exit 1 ;;
       esac
 
       peco_url="$(curl -fsSL https://api.github.com/repos/peco/peco/releases/latest \
-        | jq -r ".assets[] | select(.name == \"peco_linux_${peco_arch}.tar.gz\") | .browser_download_url")"
+        | jq -r ".assets[] | select(.name | endswith(\"_linux_${peco_arch}.tar.gz\")) | .browser_download_url")"
+
+      if [ -z "$peco_url" ]; then
+        echo "failed to resolve peco download url for linux_${peco_arch}"; exit 1
+      fi
 
       peco_tmp="$(mktemp -d)"
       curl -fsSL "$peco_url" -o "$peco_tmp/peco.tar.gz"
       tar -xzf "$peco_tmp/peco.tar.gz" -C "$peco_tmp"
-      mv "$peco_tmp/peco_linux_${peco_arch}/peco" ~/bin/peco
+      mv "$peco_tmp/peco" ~/bin/peco
       chmod +x ~/bin/peco
       rm -rf "$peco_tmp"
     fi
