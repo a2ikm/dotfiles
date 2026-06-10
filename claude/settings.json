@@ -65,7 +65,7 @@
       "Bash(git repo edit:*)",
       "Bash(sudo:*)"
     ],
-    "defaultMode": "acceptEdits"
+    "defaultMode": "auto"
   },
   "model": "opus",
   "enabledPlugins": {
@@ -80,5 +80,5 @@
     "enableWeakerNetworkIsolation": true
   },
   "skipAutoPermissionPrompt": true,
-  "defaultMode": "acceptEdits"
+  "defaultMode": "auto"
 }
