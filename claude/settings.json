@@ -24,6 +24,7 @@
       "Bash(git show:*)",
       "Bash(git reset:*)",
       "Bash(git push:*)",
+      "Bash(git worktree:*)",
       "Bash(gh api:*)",
       "Bash(gh issue list:*)",
       "Bash(gh issue view:*)",
@@ -55,19 +56,18 @@
     ],
     "deny": [
       "Bash(bash -c:*)",
-      "Bash(git -C:*)",
-      "Bash(git --git-dir:*)",
-      "Bash(git --work-tree:*)",
-      "Bash(git add .:*)",
-      "Bash(git add -A:*)",
-      "Bash(git add --all:*)",
       "Bash(git repo create:*)",
       "Bash(git repo edit:*)",
       "Bash(sudo:*)"
     ],
     "defaultMode": "auto"
   },
-  "model": "opus",
+  "model": "opus[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 0
+  },
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "ruby-lsp@claude-plugins-official": true,
@@ -79,6 +79,8 @@
   "sandbox": {
     "enableWeakerNetworkIsolation": true
   },
+  "tui": "fullscreen",
+  "skipWorkflowUsageWarning": true,
   "skipAutoPermissionPrompt": true,
   "defaultMode": "auto"
 }
