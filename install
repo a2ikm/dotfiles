@@ -30,7 +30,6 @@ link tmux/tmux.conf "$XDG_CONFIG_HOME/tmux/tmux.conf"
 link screen/screenrc ~/.screenrc
 link zsh/zshrc ~/.zshrc
 
-link claude/settings.json ~/.claude/settings.json
 link claude/CLAUDE.md ~/.claude/CLAUDE.md
 link claude/statusline.sh ~/.claude/statusline.sh
 
