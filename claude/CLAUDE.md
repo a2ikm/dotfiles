@@ -17,6 +17,9 @@
 ## Git
 
 - ブランチ名に `/` を含めないこと。区切り文字には `-` を使用する。
+- 自分がブランチ上で加えた変更をファイル単位で取り消すとき、復元元は**現ブランチの履歴上のコミット（merge-base かその祖先）に限る**。`git checkout develop -- <file>` や `git checkout origin/develop -- <file>` のように**ブランチ tip を復元元にしない**。分岐後に develop 側が進んでいると、tip 版が無関係な変更を引き込み、意図しない差分が PR に混入する（実際に `textbook_api.rb` の別機能を混入させた事故あり）。
+  - 変更前の状態へ戻すなら `git checkout "$(git merge-base origin/develop HEAD)" -- <file>` などアンカーを明示する。可能なら `git checkout <ref> -- <file>` より **Edit で対象行を直接消す**方を優先する（何を消すか目視できる）。
+  - commit / push の前と PR 作成の前に、PR として develop に入る差分を必ず確認する: `git diff "$(git merge-base origin/develop HEAD)"...HEAD --stat`。出た全ファイルが意図したものか目視する。`git diff --cached HEAD` だけで済ませない（それは直前コミットとの差分でしかなく、PR スコープを表さない）。
 - `gh pr create` で pull request を作成する際、`--body` に直接文字列を渡さず、一時ファイルに本文を書き出してから `--body-file` で渡すようにする。
   ```bash
   # 一時ファイルに本文を書き出す
