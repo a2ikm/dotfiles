@@ -13,11 +13,19 @@
 ## 文章スタイル
 
 - 文章で体言止めを使わないこと。文末は動詞や助動詞で終わるようにする。
+- GitHub（PR description・PR コメント・レビューコメント・issue 本文やコメント）に URL を書くときは、生の URL を直接置かず `[hotfix](https://github.com/owner/repo/pull/123)` のように Markdown のリンク記法で書く。GitHub の autolink は生の URL を次の半角スペースが来るまで URL とみなすため、URL をカッコで囲んでも閉じカッコや後続の文字まで URL に取り込まれてしまう。
+  ```
+  # NG: 「）を一般化し、」まで URL に含まれてしまう
+  この不具合（切り戻し hotfix: https://github.com/owner/repo/pull/123）を一般化し、
+
+  # OK
+  この不具合（切り戻し [hotfix](https://github.com/owner/repo/pull/123)）を一般化し、
+  ```
 
 ## Git
 
 - ブランチ名に `/` を含めないこと。区切り文字には `-` を使用する。
-- 自分がブランチ上で加えた変更をファイル単位で取り消すとき、復元元は**現ブランチの履歴上のコミット（merge-base かその祖先）に限る**。`git checkout develop -- <file>` や `git checkout origin/develop -- <file>` のように**ブランチ tip を復元元にしない**。分岐後に develop 側が進んでいると、tip 版が無関係な変更を引き込み、意図しない差分が PR に混入する（実際に `textbook_api.rb` の別機能を混入させた事故あり）。
+- 自分がブランチ上で加えた変更をファイル単位で取り消すとき、復元元は**現ブランチの履歴上のコミット（merge-base かその祖先）に限る**。`git checkout develop -- <file>` や `git checkout origin/develop -- <file>` のように**ブランチ tip を復元元にしない**。分岐後に develop 側が進んでいると、tip 版が無関係な変更を引き込み、意図しない差分が PR に混入する（実際に別機能の変更を混入させた事故あり）。
   - 変更前の状態へ戻すなら `git checkout "$(git merge-base origin/develop HEAD)" -- <file>` などアンカーを明示する。可能なら `git checkout <ref> -- <file>` より **Edit で対象行を直接消す**方を優先する（何を消すか目視できる）。
   - commit / push の前と PR 作成の前に、PR として develop に入る差分を必ず確認する: `git diff "$(git merge-base origin/develop HEAD)"...HEAD --stat`。出た全ファイルが意図したものか目視する。`git diff --cached HEAD` だけで済ませない（それは直前コミットとの差分でしかなく、PR スコープを表さない）。
 - `gh pr create` で pull request を作成する際、`--body` に直接文字列を渡さず、一時ファイルに本文を書き出してから `--body-file` で渡すようにする。
@@ -47,6 +55,7 @@
   ```
   取得した本文がファイルパス（例: `/var/folders/.../tmp.XXXX`）になっていた場合は投稿し直す。
 - Pull Request の description には「何をしたか」だけでなく、実装の過程で行った設計上のトレードオフ検討を記載する。「別の案 X を検討したが、理由 Y のため採用しなかった」という判断があった場合は、その代替案と不採用の理由を必ず書く。description が「〜をした」という結果の記述だけだと、そうした検討をしたのかどうかがレビュアーに読み取れないため。
+- レビューで指摘された項目をその PR で対応せず別作業（別 PR・別 issue）に回すときは、指摘を受けた PR の description に「この PR に含めないもの」として、何を・どこで対応するかを明記する。別作業に回した事実が description に無いと、次のレビューで同じ指摘を繰り返し受けるため。
 
 ## Google Workspace
 

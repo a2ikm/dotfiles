@@ -93,8 +93,11 @@ case "$(uname)" in
       tmux
 
 
-    if !(type claude >/dev/null 2>&1); then
-      curl -fsSL https://claude.ai/install.sh | bash
+    if !(type claude >/dev/null 2>&1) && [ ! -x "$HOME/.local/bin/claude" ]; then
+      # claude のインストールは環境要因で失敗しうる（ダウンロードしたバイナリが
+      # 消えて checksum 検証に失敗するなど）。ここで install 全体を止めないようにする。
+      curl -fsSL https://claude.ai/install.sh | bash \
+        || echo "warning: failed to install claude; skipped" >&2
     fi
 
     if !(type peco >/dev/null 2>&1); then
